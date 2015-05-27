@@ -39,7 +39,7 @@ public class FactAppMain {
 	// this will always return the facts.txt file.
 	public static String getFile(Scanner console) {
 		System.out.print("What file do you want to use? ");
-		String file = console.next();
+		String file = console.nextLine();
 		if (FORCE) {
 			file = "facts.txt";
 		}
@@ -54,7 +54,7 @@ public class FactAppMain {
 		System.out.print("How many random facts do you want to generate? ");
 		int number = console.nextInt();
 		System.out.print("Do you want the facts completely reversed? (y/n) ");
-		String response = console.next().trim().toLowerCase();
+		String response = console.nextLine().trim().toLowerCase();
 		facts.printFact(number, response);
 		moreFacts(facts, console);
 	}
@@ -66,7 +66,7 @@ public class FactAppMain {
 	public static void moreFacts(FactApp facts, Scanner console) {
 		System.out.println();
 		System.out.print("Do you want some more facts? (y/n) ");
-		String response = console.next().trim().toLowerCase();
+		String response = console.nextLine().trim().toLowerCase();
 		if (response.startsWith("y") || response.contains("sure")) {
 			switchFile(facts, console);
 			printFact(facts, console);
@@ -86,7 +86,7 @@ public class FactAppMain {
 	// switch files to use for the list of facts. 
 	public static void switchFile(FactApp facts, Scanner console) {
 		System.out.print("Do you want to switch files? (y/n) ");
-		String response = console.next().trim().toLowerCase();
+		String response = console.nextLine().trim().toLowerCase();
 		if (response.startsWith("y") || response.contains("sure")) {
 			getFile(console);
 		}

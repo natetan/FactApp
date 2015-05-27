@@ -1,5 +1,5 @@
 // Author: Yulong Tan
-// Date: 5.23.115
+// Date: 5.23.15
 // FactAppMain contains a program that generates n number of
 // random facts based on user input. It then prints the facts
 // out based on the input file. Afterwards, the program will
@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FactAppMain {
+	
 	// If true, no matter what the user enters, the file used will
 	// always be facts.txt. Must be set to false if they want to switch
 	// files in the file method. 
@@ -74,7 +75,7 @@ public class FactAppMain {
 			System.out.println("Thanks for trying out this program!");
 			System.out.println("It was nice showing you random facts!");
 			System.out.println("Have a nice day!");
-		} else { // user types neither yes or no and that's problematic
+		} else { // user types neither yes or no, so ask again
 			System.out.println("That's not a valid response!");
 			System.out.println("Please give me a response that makes sense!");
 			moreFacts(facts, console);

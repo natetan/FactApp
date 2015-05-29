@@ -77,4 +77,8 @@ public class FactApp {
 		String[] words = fact.trim().split("\\s+");
 		return words.length;
 	}
+	
+	public int getFactCount() {
+		return this.facts.length;
+	}
 }

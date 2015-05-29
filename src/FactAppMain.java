@@ -43,6 +43,10 @@ public class FactAppMain {
 		if (FORCE) {
 			file = "facts.txt";
 		}
+		/*
+		 * DEBUGGING LINE. REMOVE WHEN FINISHED. TELLS ME EXACTLY WHICH FILE IS BEING USED
+		 */
+		System.out.println("You are using " + file);
 		return file;
 	}
 	
@@ -51,6 +55,7 @@ public class FactAppMain {
 	// prompts the user if they want the fact to be reversed. If yes, it reverses it,
 	// else, it gets ignored. 
 	public static void printFact(FactApp facts, Scanner console) {
+		System.out.println("That file has " + facts.getFactCount() + " facts.");
 		System.out.print("How many random facts do you want to generate? ");
 		int number = console.nextInt();
 		System.out.print("Do you want the facts completely reversed? (y/n) ");

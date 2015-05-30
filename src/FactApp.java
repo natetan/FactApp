@@ -48,16 +48,20 @@ public class FactApp {
 	public void printFact(int number, String response) {
 		int characters = 0;
 		int words = 0;
-		for (int i = 1; i <= number; i ++) {
-			String fact = this.getFact();
-			if (response.startsWith("y") || response.contains("sure")) {
-				System.out.println("Reversed Fact #" + i + ": " 
-						+ this.reverseFact(fact));
-			} else { // user types no, so print regular facts
-				System.out.println("Fact #" + i + ": " + fact);
+		if (number > 0) {
+			for (int i = 1; i <= number; i ++) {
+				String fact = this.getFact();
+				if (response.startsWith("y") || response.contains("sure")) {
+					System.out.println("Reversed Fact #" + i + ": " 
+							+ this.reverseFact(fact));
+				} else { // user types no, so print regular facts
+					System.out.println("Fact #" + i + ": " + fact);
+				}
+				characters += this.characterCount(fact);
+				words += this.wordCount(fact);
 			}
-			characters += this.characterCount(fact);
-			words += this.wordCount(fact);
+		} else {
+			System.out.println("No facts were printed out.");
 		}
 		System.out.println();
 		System.out.println("Total characters: " + characters);

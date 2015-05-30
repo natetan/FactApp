@@ -20,12 +20,18 @@ public class FactAppMain {
 		Scanner console = new Scanner(System.in);
 		giveIntro();
 		FactApp facts = new FactApp();
-		Scanner input = new Scanner(new File(getFile(console)));
-		// stores the facts line by line into an array
-		facts.toArray(input);
+		addToFile(facts, console);
 		printFact(facts, console);
 	}
 	
+	// Adds the data from the file to use
+	public static void addToFile(FactApp facts, Scanner console) throws FileNotFoundException {
+		Scanner input = new Scanner(new File(getFile(console)));
+		// stores the facts line by line into an array
+		facts.toArray(input);
+	}
+	
+	// Gives an introduction to the program
 	public static void giveIntro() {
 		System.out.println("This program will try to simulate the FunFacts app I wrote");
 		System.out.println("on Android Studio and just like the one there, this can have");
@@ -43,18 +49,13 @@ public class FactAppMain {
 		if (FORCE) {
 			file = "facts.txt";
 		}
-		/*
-		 * DEBUGGING LINE. REMOVE WHEN FINISHED. TELLS ME EXACTLY WHICH FILE IS BEING USED
-		 */
-		System.out.println("You are using " + file);
 		return file;
 	}
 	
 	// This method takes in the FactApp object and a Scanner as parameters
 	// and prints out a number of random facts determined by the user. It also
-	// prompts the user if they want the fact to be reversed. If yes, it reverses it,
-	// else, it gets ignored. 
-	public static void printFact(FactApp facts, Scanner console) {
+	// prompts the user if they want the facts to be reversed.
+	public static void printFact(FactApp facts, Scanner console) throws FileNotFoundException {
 		System.out.println("That file has " + facts.getFactCount() + " facts.");
 		System.out.print("How many random facts do you want to generate? ");
 		int number = console.nextInt();
@@ -68,7 +69,7 @@ public class FactAppMain {
 	// and prompts the user to see if they want to play the game again.
 	// It will keep prompting the user until they enter something that
 	// starts with a y or an n. Case is ignored. 
-	public static void moreFacts(FactApp facts, Scanner console) {
+	public static void moreFacts(FactApp facts, Scanner console) throws FileNotFoundException {
 		System.out.println();
 		System.out.print("Do you want some more facts? (y/n) ");
 		String response = console.next().trim().toLowerCase();
@@ -89,11 +90,11 @@ public class FactAppMain {
 	
 	// This method takes in a Scanner to see if the user wants to
 	// switch files to use for the list of facts. 
-	public static void switchFile(FactApp facts, Scanner console) {
+	public static void switchFile(FactApp facts, Scanner console) throws FileNotFoundException {
 		System.out.print("Do you want to switch files? (y/n) ");
 		String response = console.next().trim().toLowerCase();
 		if (response.startsWith("y") || response.contains("sure")) {
-			getFile(console);
+			addToFile(facts, console);
 		}
 	}
 }

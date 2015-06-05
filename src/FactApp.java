@@ -9,10 +9,12 @@ import java.util.ArrayList;
 
 public class FactApp {
 	private String[] facts;
+	private int factCount;
 
 	// Initializes the fields
 	public FactApp() {
 		this.facts = null;
+		this.factCount = 0;
 	}
 
 	// This method takes in a Scanner as a parameter and
@@ -39,17 +41,22 @@ public class FactApp {
 	// This method takes in a String fact as a parameter
 	// and reverses it so it is backwards. 
 	public String reverseFact(String fact) {
-		return new StringBuffer(fact).reverse().toString();
+		String result = "";
+		for (int i = fact.length() - 1; i >= 0; i--) {
+			result += fact.charAt(i);
+		}
+		return result.trim();
 	}
 
 	// This method takes an int number and a String response
 	// to print out the facts in regular order or reverse,
 	// depending on user response. 
-	public void printFact(int number, String response) {
+	public void printFact(int number, String response) {;
 		int characters = 0;
 		int words = 0;
 		if (number > 0) {
 			for (int i = 1; i <= number; i ++) {
+				this.factCount++;
 				String fact = this.getFact();
 				if (response.startsWith("y") || response.contains("sure")) {
 					System.out.println("Reversed Fact #" + i + ": " 
@@ -64,8 +71,10 @@ public class FactApp {
 			System.out.println("No facts were printed out.");
 		}
 		System.out.println();
-		System.out.println("Total characters: " + characters);
-		System.out.println("Total words: " + words);
+		System.out.print("This set of " + number + " facts has " + characters 
+				+ " characters ");
+		System.out.println("and " + words + " words.");
+		System.out.println("Accumulative Fact Count: " + this.factCount);
 	}
 
 	// This method takes a String fact as a parameter and returns 
@@ -82,6 +91,7 @@ public class FactApp {
 		return words.length;
 	}
 	
+	// Returns the number of facts in a file
 	public int getFactCount() {
 		return this.facts.length;
 	}

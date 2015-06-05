@@ -56,7 +56,7 @@ public class FactAppMain {
 	// and prints out a number of random facts determined by the user. It also
 	// prompts the user if they want the facts to be reversed.
 	public static void printFact(FactApp facts, Scanner console) throws FileNotFoundException {
-		System.out.println("That file has " + facts.getFactCount() + " facts.");
+		System.out.println("This file has " + facts.getFactCount() + " facts.");
 		System.out.print("How many random facts do you want to generate? ");
 		int number = console.nextInt();
 		System.out.print("Do you want the facts completely reversed? (y/n) ");
